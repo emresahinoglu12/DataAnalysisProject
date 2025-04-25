@@ -1,0 +1,13 @@
+Project Proposal: DSA 210 proposal Project Proposal: Customer Behavior and Ticket Sales Analysis in a Cinema Hall
+
+Motivation: The cinema industry faces challenges in retaining customers and optimizing ticket sales. Understanding customer behavior, spending patterns, and preferences can help develop strategies for improved engagement and operational efficiency. This project aims to analyze cinema hall ticket sales to identify key customer segments, genre preferences, pricing trends, and factors influencing repeat visits.
+
+Research Questions & Hypotheses: Which demographic segments contribute the most to cinema revenue? Hypothesis: Older audiences above 40 or more prefer premium seating and higher-priced tickets, while younger audiences between 18-35 visit more frequently.
+
+Dataset Description The dataset includes: Ticket_ID: Unique identifier for each ticket purchase Age: Age of the customer Ticket_Price: Price paid for the ticket Movie_Genre: Genre of the movie watched Seat_Type: Type of seat chosen (e.g., Standard, VIP) Number_of_Person: Number of people included in the booking Purchase_Again: Whether the customer has made a repeat purchase (Yes/No)
+
+Tools & Methodologies: Data Cleaning & Preparation: Python (Pandas, NumPy), SQL for preprocessing Exploratory Data Analysis (EDA): Descriptive statistics, visualization (Matplotlib, Seaborn, Tableau/Power BI) Predictive Modeling: Machine learning techniques (Logistic Regression, Decision Trees) to predict customer retention and pricing effects Statistical Analysis: Chi-square tests, ANOVA, and correlation analysis to validate hypotheses Business Intelligence Reporting: Dashboards for key insights using Power BI/Tableau
+
+Expected Outcomes: Genre-based audience insights for targeted marketing strategies
+
+Conclusion: By leveraging ticket sales and customer behavior data, this study will provide actionable insights for cinema operators to refine pricing, marketing, and customer engagement strategies. The findings will help drive better decision-making to enhance profitability and customer experience.
