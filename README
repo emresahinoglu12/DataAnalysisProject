@@ -1,13 +1,184 @@
-Project Proposal: DSA 210 proposal Project Proposal: Customer Behavior and Ticket Sales Analysis in a Cinema Hall
+# 🎬 Cinema Hall Ticket Sales Analysis
 
-Motivation: The cinema industry faces challenges in retaining customers and optimizing ticket sales. Understanding customer behavior, spending patterns, and preferences can help develop strategies for improved engagement and operational efficiency. This project aims to analyze cinema hall ticket sales to identify key customer segments, genre preferences, pricing trends, and factors influencing repeat visits.
+**Author:** Emre Şahinoğlu
+**Date:** May 19, 2025  
 
-Research Questions & Hypotheses: Which demographic segments contribute the most to cinema revenue? Hypothesis: Older audiences above 40 or more prefer premium seating and higher-priced tickets, while younger audiences between 18-35 visit more frequently.
+---
 
-Dataset Description The dataset includes: Ticket_ID: Unique identifier for each ticket purchase Age: Age of the customer Ticket_Price: Price paid for the ticket Movie_Genre: Genre of the movie watched Seat_Type: Type of seat chosen (e.g., Standard, VIP) Number_of_Person: Number of people included in the booking Purchase_Again: Whether the customer has made a repeat purchase (Yes/No)
+## 📖 Project Overview
 
-Tools & Methodologies: Data Cleaning & Preparation: Python (Pandas, NumPy), SQL for preprocessing Exploratory Data Analysis (EDA): Descriptive statistics, visualization (Matplotlib, Seaborn, Tableau/Power BI) Predictive Modeling: Machine learning techniques (Logistic Regression, Decision Trees) to predict customer retention and pricing effects Statistical Analysis: Chi-square tests, ANOVA, and correlation analysis to validate hypotheses Business Intelligence Reporting: Dashboards for key insights using Power BI/Tableau
+This project applies the full data-science pipeline to a real-world cinema ticket-sales dataset:
 
-Expected Outcomes: Genre-based audience insights for targeted marketing strategies
+1. **Data Loading & Cleaning**  
+2. **Feature Engineering**  
+3. **Exploratory Data Analysis (EDA)**  
+4. **Statistical Hypothesis Testing**  
+5. **Predictive Modeling** (Logistic Regression)  
+6. **Customer Segmentation** (K-Means Clustering)  
+7. **Artifact Generation** (cleaned CSV, model pickles, visualizations)  
 
-Conclusion: By leveraging ticket sales and customer behavior data, this study will provide actionable insights for cinema operators to refine pricing, marketing, and customer engagement strategies. The findings will help drive better decision-making to enhance profitability and customer experience.
+The goal is to understand customer demographics, seating and genre preferences, pricing trends, and factors influencing repeat visits—yielding actionable insights for marketing and retention. :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}
+
+---
+
+## 🔍 Motivation
+
+- **Optimize Pricing & Seating**: Identify which seat types and price points resonate with different age groups.  
+- **Improve Retention**: Understand what drives a customer to purchase again.  
+- **Targeted Marketing**: Discover genre and demographic segments for personalized campaigns.  
+
+---
+
+## 📂 Data Source
+
+- **Raw Data**: `data/cinema_hall_ticket_sales.csv`  
+- **Features**:
+  - `ticket_id` (unique sale)
+  - `age`
+  - `ticket_price`
+  - `movie_genre`
+  - `seat_type`  
+  - `number_of_person` (`Alone` ⇒ 1)
+  - `purchase_again` (`Yes`/`No` ⇒ 1/0)  
+
+---
+
+## ⚙️ Repository Structure
+
+DataAnalysisProject/
+├── data/
+│ ├── cinema_hall_ticket_sales.csv # Original raw data
+│ └── cleaned_cinema_data.csv # Cleaned data (output)
+├── models/
+│ ├── logistic_model.pkl # Trained logistic regression pipeline
+│ └── scaler.pkl # StandardScaler for clustering
+├── notebooks/
+│ └── eda_analysis.ipynb # Interactive EDA & hypothesis-testing
+├── visuals/ # Generated .png charts
+│ ├── age_distribution.png
+│ ├── price_by_seat_type.png
+│ ├── genre_counts.png
+│ ├── revenue_by_genre.png
+│ ├── repeat_rate_by_age_group.png
+│ ├── correlation_matrix.png
+│ ├── weekly_sales_trend.png
+│ ├── roc_curve.png
+│ ├── confusion_matrix.png
+│ ├── elbow.png
+│ └── silhouette.png
+├── generate_eda_analysis.py # Script to auto-generate EDA notebook
+├── main.py # Main analysis & modeling pipeline
+├── requirements.txt # Python dependencies
+└── README.md # This document
+
+## 🛠️ Prerequisites & Setup
+
+1. **Clone repository**  
+   ```bash
+   git clone <repo-url>
+   cd DataAnalysisProject
+
+
+Create & activate virtual environment
+
+python3 -m venv venv
+source venv/bin/activate       # macOS/Linux
+# or venv\Scripts\activate      # Windows
+
+
+Install dependencies
+
+pip install -r requirements.txt
+
+
+🚀 Usage
+1. Run full pipeline
+This executes cleaning, EDA chart generation, statistical tests, model training, clustering, and saves all artifacts.
+
+python main.py
+
+
+2. View interactive EDA
+Auto-generate or re-generate the notebook:
+
+python generate_eda_analysis.py
+
+
+Then launch Jupyter:
+
+jupyter notebook
+
+
+Open notebooks/eda_analysis.ipynb, run all cells, and view inline charts.
+
+
+
+
+
+
+
+🧰 Methodology
+Cleaning & Feature Engineering
+
+Standardize column names, convert “Alone” → 1, map Yes/No to 1/0
+
+Compute revenue, price_per_person, age_group, weekday/weekend flags
+
+Exploratory Data Analysis
+
+Distributions (age, price by seat)
+
+Genre counts & revenue
+
+Repeat-purchase rates by age group
+
+Correlation heatmap & weekly sales trends
+
+Statistical Tests
+
+Chi-square: Premium seat preference among >40 vs ≤40
+
+T-test: Repeat-purchase rate for 18–35 vs others
+
+ANOVA: Ticket-price differences across genres
+
+Predictive Modeling
+
+Logistic Regression pipeline (scaling + one-hot encoding)
+
+Evaluation: Accuracy, ROC-AUC, classification report, confusion matrix
+
+Customer Segmentation
+
+K-Means clustering on numeric features
+
+Elbow & silhouette methods to select k
+
+Profiling cluster centroids for targeted strategies
+
+📈 Key Findings
+Missing Data: None (all columns complete).
+
+Hypotheses: No statistically significant support for seat preference by age >40 or higher repeat rates in 18–35.
+
+Pricing & Seating: Premium/VIP seats command higher prices but aren’t strongly age-dependent.
+
+Genre Popularity: Comedy and Drama top both sales and revenue.
+
+Repeat Purchases: Highest among 36–50 age group, not the youngest.
+
+Segments: Distinct clusters emerged by age, spend, and group size—informing personalized offers.
+
+🚧 Limitations & Future Work
+Data Gaps: No showtimes, ratings, or promotional flags.
+
+External Factors: Holiday/seasonality and social media sentiment not incorporated.
+
+Next Steps:
+
+Enrich with external datasets (e.g. weather, reviews).
+
+Build advanced retention models (e.g. tree-based).
+
+Deploy dashboard for real-time monitoring.
+
