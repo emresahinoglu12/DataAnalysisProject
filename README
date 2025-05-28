@@ -1,83 +1,107 @@
-# 🎬 Cinema Hall Ticket Sales Analysis
+🎬 Cinema Hall Ticket Sales Analysis
 
-**Author:** Emre Şahinoğlu
-**Date:** May 19, 2025  
+Author: Emre ŞahinoğluDate: May 19, 2025
 
----
-
-## 📖 Project Overview
+📖 Project Overview
 
 This project applies the full data-science pipeline to a real-world cinema ticket-sales dataset:
 
-1. **Data Loading & Cleaning**  
-2. **Feature Engineering**  
-3. **Exploratory Data Analysis (EDA)**  
-4. **Statistical Hypothesis Testing**  
-5. **Predictive Modeling** (Logistic Regression)  
-6. **Customer Segmentation** (K-Means Clustering)  
-7. **Artifact Generation** (cleaned CSV, model pickles, visualizations)  
+Data Loading & Cleaning
 
-The goal is to understand customer demographics, seating and genre preferences, pricing trends, and factors influencing repeat visits—yielding actionable insights for marketing and retention. :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}
+Feature Engineering
 
----
+Exploratory Data Analysis (EDA)
 
-## 🔍 Motivation
+Statistical Hypothesis Testing
 
-- **Optimize Pricing & Seating**: Identify which seat types and price points resonate with different age groups.  
-- **Improve Retention**: Understand what drives a customer to purchase again.  
-- **Targeted Marketing**: Discover genre and demographic segments for personalized campaigns.  
+Predictive Modeling & Classifier Comparison
 
----
+Customer Segmentation (K-Means Clustering)
 
-## 📂 Data Source
+Artifact Generation
 
-- **Raw Data**: `data/cinema_hall_ticket_sales.csv`  
-- **Features**:
-  - `ticket_id` (unique sale)
-  - `age`
-  - `ticket_price`
-  - `movie_genre`
-  - `seat_type`  
-  - `number_of_person` (`Alone` ⇒ 1)
-  - `purchase_again` (`Yes`/`No` ⇒ 1/0)  
+Cleaned CSV
 
----
+10+ model pickles
 
-## ⚙️ Repository Structure
+Scalers
+
+20+ .png visualizations
+
+The aim is to uncover customer demographics, seating & genre preferences, pricing trends, and drivers of repeat visits—enabling data-driven marketing and retention strategies.
+
+🔍 Motivation
+
+Optimize Pricing & SeatingDetermine which seat types and price points resonate with each age segment.
+
+Improve RetentionIdentify factors that influence “purchase again.”
+
+Targeted CampaignsSegment by genre preferences and customer clusters for personalized outreach.
+
+📂 Data Source
+
+Raw Data: data/cinema_hall_ticket_sales.csv
+
+Key Columns:
+
+ticket_id
+
+age
+
+ticket_price
+
+movie_genre
+
+seat_type
+
+number_of_person (Alone → 1)
+
+purchase_again (Yes/No → 1/0)
+
+⚙️ Repository Structure
 
 DataAnalysisProject/
 ├── data/
 │ ├── cinema_hall_ticket_sales.csv # Original raw data
-│ └── cleaned_cinema_data.csv # Cleaned data (output)
-├── models/
-│ ├── logistic_model.pkl # Trained logistic regression pipeline
-│ └── scaler.pkl # StandardScaler for clustering
+│ └── cleaned_cinema_data.csv # Cleaned output
+├── models/ # 10+ serialized models & scalers
+│ ├── logistic_model.pkl
+│ ├── knn_model.pkl
+│ ├── naivebayes_model.pkl
+│ ├── svm_model.pkl
+│ ├── decisiontree_model.pkl
+│ ├── randomforest_model.pkl
+│ ├── gradientboost_model.pkl
+│ ├── xgboost_model.pkl
+│ ├── lda_model.pkl
+│ ├── qda_model.pkl
+│ ├── mlp_model.pkl
+│ ├── best_model.pkl
+│ ├── scaler_model.pkl
+│ └── cluster_scaler.pkl
 ├── notebooks/
-│ └── eda_analysis.ipynb # Interactive EDA & hypothesis-testing
-├── visuals/ # Generated .png charts
+│ └── eda_analysis.ipynb # Auto-generated EDA & modeling notebook
+├── visuals/ # 20+ charts
 │ ├── age_distribution.png
 │ ├── price_by_seat_type.png
 │ ├── genre_counts.png
 │ ├── revenue_by_genre.png
 │ ├── repeat_rate_by_age_group.png
 │ ├── correlation_matrix.png
-│ ├── weekly_sales_trend.png
-│ ├── roc_curve.png
-│ ├── confusion_matrix.png
+│ ├── classifier_comparison.png
 │ ├── elbow.png
-│ └── silhouette.png
-├── generate_eda_analysis.py # Script to auto-generate EDA notebook
-├── main.py # Main analysis & modeling pipeline
-├── requirements.txt # Python dependencies
+│ ├── silhouette.png
+├── generate_eda_analysis.py # Generates eda_analysis.ipynb
+├── main.py # Full pipeline: cleaning → EDA → models → clustering
+├── requirements.txt # Dependencies
 └── README.md # This document
 
-## 🛠️ Prerequisites & Setup
+🛠️ Prerequisites & Setup
 
-1. **Clone repository**  
-   ```bash
-   git clone <repo-url>
-   cd DataAnalysisProject
+Clone repository
 
+git clone <your-repo-url>
+cd DataAnalysisProject
 
 Create & activate virtual environment
 
@@ -85,100 +109,87 @@ python3 -m venv venv
 source venv/bin/activate       # macOS/Linux
 # or venv\Scripts\activate      # Windows
 
-
 Install dependencies
 
 pip install -r requirements.txt
 
-
 🚀 Usage
-1. Run full pipeline
-This executes cleaning, EDA chart generation, statistical tests, model training, clustering, and saves all artifacts.
+
+Run full pipelineCleans data, generates 20+ visuals, runs statistical tests, trains 10+ models, selects best, and segments customers:
 
 python main.py
 
-
-2. View interactive EDA
-Auto-generate or re-generate the notebook:
+Re-generate EDA notebook
 
 python generate_eda_analysis.py
-
-
-Then launch Jupyter:
-
-jupyter notebook
-
-
-Open notebooks/eda_analysis.ipynb, run all cells, and view inline charts.
-
-
-
-
-
-
+jupyter notebook notebooks/eda_analysis.ipynb
 
 🧰 Methodology
-Cleaning & Feature Engineering
 
-Standardize column names, convert “Alone” → 1, map Yes/No to 1/0
+Data Cleaning & Feature Engineering
 
-Compute revenue, price_per_person, age_group, weekday/weekend flags
+Normalize names, map “Alone” → 1, Yes/No → 1/0
+
+Create revenue, price_per_person, age_group, day_of_week, is_weekend
 
 Exploratory Data Analysis
 
-Distributions (age, price by seat)
+Distributions, counts, revenue by category
 
-Genre counts & revenue
+Repeat-purchase rates, correlation heatmap, trends
 
-Repeat-purchase rates by age group
-
-Correlation heatmap & weekly sales trends
+15 additional scatter, box, pie, hist, pairplot, cluster visuals
 
 Statistical Tests
 
-Chi-square: Premium seat preference among >40 vs ≤40
-
-T-test: Repeat-purchase rate for 18–35 vs others
-
-ANOVA: Ticket-price differences across genres
+Chi-square, T-test, ANOVA
 
 Predictive Modeling
 
-Logistic Regression pipeline (scaling + one-hot encoding)
+10+ classifiers in pipelines
 
-Evaluation: Accuracy, ROC-AUC, classification report, confusion matrix
+Evaluate via ROC-AUC, save all, pick best
+
+Comparison bar chart
 
 Customer Segmentation
 
-K-Means clustering on numeric features
+K-Means on numeric features
 
-Elbow & silhouette methods to select k
+Elbow & silhouette to choose k
 
-Profiling cluster centroids for targeted strategies
+Save clusters & scaler
 
 📈 Key Findings
-Missing Data: None (all columns complete).
 
-Hypotheses: No statistically significant support for seat preference by age >40 or higher repeat rates in 18–35.
+Data Quality: No missing values after cleaning.
 
-Pricing & Seating: Premium/VIP seats command higher prices but aren’t strongly age-dependent.
+Hypotheses:
 
-Genre Popularity: Comedy and Drama top both sales and revenue.
+No significant Premium-seat preference among >40.
 
-Repeat Purchases: Highest among 36–50 age group, not the youngest.
+No significant repeat-rate boost for 18–35.
 
-Segments: Distinct clusters emerged by age, spend, and group size—informing personalized offers.
+Ticket price varies by genre (ANOVA).
 
-🚧 Limitations & Future Work
-Data Gaps: No showtimes, ratings, or promotional flags.
+Modeling:
 
-External Factors: Holiday/seasonality and social media sentiment not incorporated.
+Best model (e.g. RandomForest) ROC-AUC ≈ 0.65.
 
-Next Steps:
+Segments:
 
-Enrich with external datasets (e.g. weather, reviews).
+Distinct clusters by age, spend, group size—guiding targeted offers.
 
-Build advanced retention models (e.g. tree-based).
+🚧 Limitations & Next Steps
 
-Deploy dashboard for real-time monitoring.
+Missing Context: Showtimes, promotions, seasonality excluded.
 
+External Data: Weather, reviews, sentiment could enhance insights.
+
+Future Work:
+
+Deploy a dashboard for live monitoring.
+
+Time-series forecasting of ticket sales.
+
+Explore AutoML & deep-learning approaches.
